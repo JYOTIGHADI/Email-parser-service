@@ -1,0 +1,85 @@
+{
+  "info": {
+    "_postman_id": "eac25efb-1496-4ebc-83ce-8c6e7b281132",
+    "name": "email-parser-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Email",
+      "id": "e0986bbf-5cbe-4202-92c5-2fcff00612a1",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"subject\": \"Test Email\",\r\n  \"body\": \"Hey!How are you?\",\r\n  \"sender\": \"soni23032003@gmail.com\",\r\n  \"received_at\": \"2026-02-13T00:00:00Z\"\r\n}\r\n\r\n\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/emails",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "emails"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all Email",
+      "id": "5c7103c0-4d6e-4dc0-8ab8-62b38cc7fb35",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/emails",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "emails"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Email By ID",
+      "id": "2379e765-884b-4187-9d16-9b3871b4353f",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/emails/698e2beaf19a7f5bed745fce",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "emails",
+            "698e2beaf19a7f5bed745fce"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

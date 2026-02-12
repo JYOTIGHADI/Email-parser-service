@@ -2,14 +2,14 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    const connenctionInstance = await mongoose.connect(
-      `${process.env.MONGO_URL}`,
-    );
+    // No options needed for Mongoose v7+
+    const connectionInstance = await mongoose.connect(process.env.MONGO_URI);
+
     console.log(
-      `\n MongoDB connected !! DB HOST: ${connenctionInstance.connection.host}`,
+      `\nMongoDB connected! DB HOST: ${connectionInstance.connection.host}`
     );
   } catch (error) {
-    console.log("MongoDB connection error!", error);
+    console.error("MongoDB connection error!", error);
     process.exit(1);
   }
 };

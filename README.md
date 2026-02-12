@@ -1,5 +1,9 @@
 # Email Parser & Ingestion Service
 
+
+You said:
+# Email Parser & Ingestion Service
+
 A Node.js-based email parser service that reads incoming emails from a Gmail inbox using IMAP, extracts key details (subject, body, sender, timestamps), stores them in MongoDB, and exposes APIs to fetch parsed emails. A minimal React UI is provided to view the parsed emails.
 
 ---
@@ -8,10 +12,10 @@ A Node.js-based email parser service that reads incoming emails from a Gmail inb
 
 Build an email parser & ingestion service that:
 
-- Reads email subject and body when a new email is received
-- Stores extracted data in a database
-- Exposes APIs to fetch parsed emails
-- Provides a minimal UI to view emails
+- Automatically read email subjects and bodies from Gmail
+- Extract and store email metadata in a database
+- Expose APIs to fetch parsed emails
+- Provide a minimal, easy-to-use UI to view emails
 
 ---
 
@@ -36,22 +40,22 @@ This project uses **Option A: Direct Email Reading (IMAP)**:
 
 APIs implemented:
 
-#### POST `/api/emails`
+#### POST /api/emails
 
 Accepts email data (subject, body, sender, received_at)
 
 **Request Body Example**
 
-```json
+json
 {
   "subject": "Test Email",
   "body": "This is a test email body",
   "sender": "test@example.com",
-  "received_at": "2026-01-23T10:00:00.000Z"
+  "received_at": "2026-02-13T10:00:00.000Z" 
 }
-```
 
-#### GET `/api/emails`
+
+#### GET /api/emails
 
 Returns list of parsed emails with pagination support
 
@@ -61,7 +65,7 @@ page (default: 1)
 
 limit (default: 10)
 
-#### GET `/api/emails/:id`
+#### GET /api/emails/:id
 
 Returns a single email record by ID
 
@@ -69,56 +73,55 @@ Returns a single email record by ID
 
 ### 1️⃣ Clone repository
 
-```bash
-git clone <YOUR_REPO_LINK>
+bash
+git clone <(https://github.com/JYOTIGHADI/Email-parser-service)>
 cd email-parser
-```
+
 
 ### 2️⃣ Install dependencies
 
 #### Backend Setup
 
-```bash
+bash
 cd server
 npm install
-```
+
 
 ### 3️⃣ Create .env file
 
-```
-PORT=3000
-MONGO_URI=<YOUR_MONGO_URI>
+PORT=8000
+MONGODB_URL=<YOUR_MONGODB_URL>
 
-GMAIL_USER=<YOUR_GMAIL_ADDRESS>
-GMAIL_APP_PASSWORD=<YOUR_GMAIL_APP_PASSWORD>
-```
+EMAIL_USER=<YOUR_EMAIL_ADDRESS>
+EMAIL_PASS=<YOUR_EMAIL_PASS>
+
 
 ### 4️⃣ Start backend server
 
-```bash
+bash
 npm run dev
-```
+
 
 #### Frontend Setup
 
 ### 5️⃣ Install dependencies
 
-```bash
+bash
 cd client
 npm install
-```
+
 
 ### 6️⃣ Start React UI
 
-```bash
+bash
 npm run dev
-```
+
 
 ## 🧪 How to Test the Setup
 
 ### ✅ Step 1: Send a test email
 
-Send an email to the Gmail account configured in your `.env`.
+Send an email to the Gmail account configured in your .env.
 
 Example email:
 
@@ -132,20 +135,20 @@ Example email:
 In your backend terminal you should see:
 Email ingestion completed
 
-and no validation errors like `body: Path 'body' is required`.
+and no validation errors like body: Path 'body' is required.
 
 ---
 
 ### ✅ Step 3: Verify Data in MongoDB
 
-Open MongoDB Compass and check the `emails` collection.  
+Open MongoDB Compass and check the emails collection.  
 You should see the parsed email stored with fields like:
 
-- `subject`
-- `body`
-- `sender`
-- `receivedAt`
-- `parsedAt`
+- subject
+- body
+- sender
+- receivedAt
+- parsedAt
 
 ---
 
@@ -162,11 +165,11 @@ Click on any email to view its **subject and body**.
 
 #### Fetch all emails
 
-GET - http://localhost:3000/api/emails
+GET - http://localhost:8000/api/emails 
 
 #### Fetch email by ID
 
-GET - http://localhost:3000/api/emails/:id
+GET - http://localhost:8000/api/emails/:id 
 
 ---
 
@@ -188,5 +191,5 @@ The Postman collection for all API endpoints is included in this repository.
 2. Click **Import**
 3. Select the JSON file
 4. Update the base URL if needed:
-   - Local: `http://localhost:3000/api`
-   - Deployed: `https://email-parser-17au.onrender.com/api`
+   - Local: http://localhost:8000/api 
+   - Deployed: ,

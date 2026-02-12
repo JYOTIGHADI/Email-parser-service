@@ -4,8 +4,8 @@ import { Email } from "../models/email.model.js";
 
 export const startGmailIngestion = () => {
   const imap = new Imap({
-    user: process.env.EMAIL_USER,
-    password: process.env.EMAIL_PASS,
+    user: process.env.GMAIL_USER,
+    password: process.env.GMAIL_APP_PASSWORD,
     host: "imap.gmail.com",
     port: 993,
     tls: true,

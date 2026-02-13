@@ -70,8 +70,8 @@ Returns a single email record by ID
 ### 1️⃣ Clone repository
 
 ```bash
-git clone <YOUR_REPO_LINK>
-cd email-parser
+git clone : (https://github.com/JYOTIGHADI/Email-parser-service)
+cd Email-parser-service
 ```
 
 ### 2️⃣ Install dependencies
@@ -87,10 +87,10 @@ npm install
 
 ```
 PORT=8000
-MONGODB_URI=<YOUR_MONGODB_URI>
+MONGO_URI=<YOUR_MONGODB_URI>
 
-EMAIL_USER=<YOUR_EMAIL_ADDRESS>
-EMAIL_PASSWORD=<YOUR_GMAIL_PASS>
+GMAIL_USER=<YOUR_EMAIL_ADDRESS>
+GMAIL_APP_PASSWORD=<YOUR_GMAIL_APP_PASSWORD>
 ```
 
 ### 4️⃣ Start backend server
@@ -189,4 +189,4 @@ The Postman collection for all API endpoints is included in this repository.
 3. Select the JSON file
 4. Update the base URL if needed:
    - Local: `http://localhost:8000/api`
-   - Deployed: ``
+   - Deployed: `https://email-parser-service-1.onrender.com`

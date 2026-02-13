@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    // No options needed for Mongoose v7+
+   
     const connectionInstance = await mongoose.connect(process.env.MONGO_URI);
 
     console.log(

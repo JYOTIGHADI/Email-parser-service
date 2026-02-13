@@ -70,8 +70,8 @@ Returns a single email record by ID
 ### 1️⃣ Clone repository
 
 ```bash
-git clone <YOUR_REPO_LINK>
-cd email-parser
+git clone : (https://github.com/JYOTIGHADI/Email-parser-service)
+cd Email-parser-service
 ```
 
 ### 2️⃣ Install dependencies

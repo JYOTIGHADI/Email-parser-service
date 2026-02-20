@@ -13,8 +13,15 @@ const app = express();
 //   }),
 // );
 
-app.use(cors());
-
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://email-parser-service-ochre.vercel.app", // replace with your real Vercel URL
+    ],
+    credentials: false,
+  })
+);
 
 
 app.use(express.json());

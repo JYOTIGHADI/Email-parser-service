@@ -25,9 +25,9 @@ function CreateEmail() {
         received_at: new Date(form.received_at).toISOString(),
       });
 
-      alert("Email added successfully ✅");
+      alert("Email added successfully ");
 
-      // Redirect to Inbox page
+      
       navigate("/");
     } catch (err) {
       alert(err.message);

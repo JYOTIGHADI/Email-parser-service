@@ -6,12 +6,16 @@ import bodyParser from "body-parser";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: false,
-  }),
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     credentials: false,
+//   }),
+// );
+
+app.use(cors());
+
+
 
 app.use(express.json());
 app.use(bodyParser.json());

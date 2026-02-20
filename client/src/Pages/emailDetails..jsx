@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getEmailById } from "../api/emailApi";
+import { getEmailById } from "../api/email.api";
 
 function EmailPage() {
   const { id } = useParams();

@@ -189,4 +189,4 @@ The Postman collection for all API endpoints is included in this repository.
 3. Select the JSON file
 4. Update the base URL if needed:
    - Local: `http://localhost:8000/api`
-   - Deployed: `https://email-parser-service-1.onrender.com`
+   - Deployed: `(https://email-parser-service-ochre.vercel.app/)`

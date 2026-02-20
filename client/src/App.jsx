@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Inbox from "./pages/Inbox";
-import EmailPage from "./pages/EmailPage";
+import Inbox from "../src/Pages/Inbox";
+import EmailPage from "../src/pages/EmailPage";
 
 function App() {
   return (

@@ -1,29 +1,20 @@
-import { useState } from "react";
-import EmailList from "../src/Pages/emailList";
-import EmailDetails from "../src/Pages/emailDetails.";
-import CreateEmail from "../src/Pages/CreateEmail";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EmailList from "./Pages/EmailList";
+import EmailDetails from "./Pages/EmailDetails";
+import CreateEmail from "./Pages/CreateEmail";
 import "./App.css";
 
 function App() {
-  const [selectedEmailId, setSelectedEmailId] = useState(null);
-  const [refresh, setRefresh] = useState(false);
-
-  const reloadEmails = () => {
-    setRefresh(!refresh);
-  };
-
   return (
-    <div className="layout">
-      <div className="left-panel">
-        <CreateEmail onEmailCreated={reloadEmails} />
-        <EmailList
-          onSelect={setSelectedEmailId}
-          refresh={refresh}
-        />
-      </div>
-
-      <EmailDetails emailId={selectedEmailId} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<EmailList />} />
+        <Route path="/create" element={<CreateEmail />} />
+        <Route path="/emails/:id" element={<EmailDetails />} />
+        <Route path="*" element={<h2>Page Not Found</h2>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

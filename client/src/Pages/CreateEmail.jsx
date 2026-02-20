@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { createEmail} from "../api/email.api";
+import { useNavigate, Link } from "react-router-dom";
+import { createEmail } from "../api/email.api";
 
-function CreateEmail({ onEmailCreated }) {
+function CreateEmail() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     subject: "",
     body: "",
     sender: "",
-    receivedAt: "",
+    received_at: "",
   });
 
   const handleChange = (e) => {
@@ -17,25 +20,26 @@ function CreateEmail({ onEmailCreated }) {
     e.preventDefault();
 
     try {
-      await createEmail(form);
-      alert("Email added successfully");
-
-      setForm({
-        subject: "",
-        body: "",
-        sender: "",
-        receivedAt: "",
+      await createEmail({
+        ...form,
+        received_at: new Date(form.received_at).toISOString(),
       });
 
-      onEmailCreated(); // refresh inbox
+      alert("Email added successfully ✅");
+
+      // Redirect to Inbox page
+      navigate("/");
     } catch (err) {
       alert(err.message);
     }
   };
 
   return (
-    <div className="create-email">
+    <div className="create-email" style={{ padding: "20px" }}>
+      <Link to="/">← Back to Inbox</Link>
+
       <h2>Add New Email</h2>
+
       <form onSubmit={handleSubmit}>
         <input
           name="subject"
@@ -55,8 +59,8 @@ function CreateEmail({ onEmailCreated }) {
 
         <input
           type="datetime-local"
-          name="receivedAt"
-          value={form.receivedAt}
+          name="received_at"
+          value={form.received_at}
           onChange={handleChange}
           required
         />

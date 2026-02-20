@@ -1,43 +1,60 @@
 import { useEffect, useState } from "react";
-import { getEmailById } from "../api/email.api";
+import { Link } from "react-router-dom";
+import { getEmails } from "../api/email.api";
 
-function EmailDetails({ emailId }) {
-  const [email, setEmail] = useState(null);
+function EmailList() {
+  const [emails, setEmails] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!emailId) return;
-
-    const fetchEmail = async () => {
+    const fetchEmails = async () => {
       try {
-        const data = await getEmailById(emailId);
-        setEmail(data);
-      } catch (err) {
-        console.error(err.message);
+        const response = await getEmails();
+
+        console.log("API Response:", response);
+
+        // 🔥 CORRECT FIELD
+        setEmails(response.emails || []);
+      } catch (error) {
+        console.error("Error fetching emails:", error);
+        setEmails([]);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchEmail();
-  }, [emailId]);
+    fetchEmails();
+  }, []);
 
-  if (!emailId) {
-    return <div className="content">Select an email to view</div>;
-  }
-
-  if (!email) {
-    return <div className="content">Loading...</div>;
+  if (loading) {
+    return <div className="container">Loading emails...</div>;
   }
 
   return (
-    <div className="content">
-      <h2>{email.subject}</h2>
-      <p className="meta">From: {email.sender}</p>
-      <p className="meta">
-        Received: {new Date(email.receivedAt).toLocaleString()}
-      </p>
-      <hr />
-      <p>{email.body}</p>
+    <div className="container">
+      <div className="header">
+        <h2>Inbox</h2>
+        <Link to="/create" className="btn">
+          + New Email
+        </Link>
+      </div>
+
+      {emails.length === 0 ? (
+        <p>No emails found.</p>
+      ) : (
+        <ul className="email-list">
+          {emails.map((email) => (
+            <li key={email._id} className="email-item">
+              <Link to={`/emails/${email._id}`}>
+                <h4>{email.subject}</h4>
+                <p>{email.sender}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
 
-export default EmailDetails;
+export default EmailList;

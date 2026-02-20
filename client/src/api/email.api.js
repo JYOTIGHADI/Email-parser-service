@@ -1,37 +1,48 @@
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
-// GET ALL EMAILS
+
+const handleResponse = async (res) => {
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || "Something went wrong");
+  }
+
+  return data; 
+};
+
+
 export const getEmails = async (page = 1, limit = 5) => {
   const res = await fetch(
     `${BASE_URL}/api/emails?page=${page}&limit=${limit}`
   );
 
-  if (!res.ok) throw new Error("Failed to fetch emails");
-
-  return res.json();
+  return handleResponse(res);
 };
 
-// GET SINGLE EMAIL
+
 export const getEmailById = async (id) => {
   const res = await fetch(`${BASE_URL}/api/emails/${id}`);
-
-  if (!res.ok) throw new Error("Failed to fetch email");
-
-  return res.json();
+  const response = await handleResponse(res);
+  return response.data; 
 };
 
-// CREATE EMAIL
+
 export const createEmail = async (emailData) => {
   const res = await fetch(`${BASE_URL}/api/emails`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(emailData),
+    body: JSON.stringify({
+      subject: emailData.subject,
+      body: emailData.body,
+      sender: emailData.sender,
+      received_at: emailData.received_at
+        ? new Date(emailData.received_at).toISOString()
+        : new Date().toISOString(),
+    }),
   });
 
-  if (!res.ok) throw new Error("Failed to create email");
-
-  return res.json();
+  return handleResponse(res);
 };
-

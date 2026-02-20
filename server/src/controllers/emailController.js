@@ -31,12 +31,13 @@ export const createEmail = async (req, res, next) => {
 
 export const getEmails = async (req, res, next) => {
   try {
+    
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     const skip = (page - 1) * limit;
 
     const emails = await Email.find()
-      .sort({ receivedAt: -1 })
+      .sort({ received_at: -1 })
       .skip(skip)
       .limit(limit);
 
@@ -44,6 +45,7 @@ export const getEmails = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
+      message: "Emails fetched successfully",
       page,
       limit,
       total,

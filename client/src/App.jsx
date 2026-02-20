@@ -1,9 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
-import EmailList from "../Pages/EmailList.jsx";
-import EmailDetails from "../Pages/EmailDetails.jsx";
-import CreateEmail from "../Pages/CreateEmail.jsx";
+import EmailList from "./Pages/emailList.jsx";
+import EmailDetails from "./Pages/EmailDetails.jsx";
+import CreateEmail from "./Pages/CreateEmail.jsx";
 
 import "./App.css";
 

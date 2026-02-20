@@ -13,7 +13,7 @@ function EmailList() {
 
         console.log("API Response:", response);
 
-        // 🔥 CORRECT FIELD
+        
         setEmails(response.emails || []);
       } catch (error) {
         console.error("Error fetching emails:", error);
